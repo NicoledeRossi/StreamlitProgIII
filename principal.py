@@ -1,5 +1,5 @@
 import streamlit as st
-#from utils.carrega_dados import carregar_dados
+from utils.carrega_dados import carrega_dados
 
 st.set_page_config(
     page_title="Frequencia Pacientes em Consultas",
@@ -8,3 +8,6 @@ st.set_page_config(
 )
 
 st.title("Frequencia Pacientes em Consultas")
+
+df = carrega_dados()
+
