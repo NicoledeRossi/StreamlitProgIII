@@ -30,13 +30,15 @@ O seu conjunto de dados tem as seguintes dimensões:
 ### Como Navegar:
 
 Utilize o menu de navegação na **barra lateral (esquerda)** para explorar as diferentes seções do aplicativo:
+Cada seção apresenta gráficos, análises e informações específicas relacionadas à frequência dos pacientes em consultas.
 
-* **📊 Dashboard de Análise:** Explore a distribuição de tecnologias, cargos e outras métricas gerais.
-* **📈 Salários & Tendências:** Mergulhe em análises salariais, entendendo as remunerações por diferentes fatores.
-* **📝 Relatórios Detalhados:** Acesse insights mais aprofundados sobre tópicos específicos.
-            
+- Dashboard principal com gráficos de presença e ausência.
 
+- Análises de condições médicas, faixas etárias e outras variáveis.
 
+- Relatórios detalhados com dados complementares.
+
+ ---           
 Agradecemos a sua visita e esperamos que encontre informações valiosas aqui!
 """)
 
