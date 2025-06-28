@@ -40,8 +40,9 @@ Utilize o menu de navegação na **barra lateral (esquerda)** para explorar as d
 Agradecemos a sua visita e esperamos que encontre informações valiosas aqui!
 """)
 
-st.header("Resumo dos Principais Dados")
-st.dataframe(df.head())
+
+
+
 
 
 

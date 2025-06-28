@@ -5,10 +5,10 @@ import requests
 @st.cache_data
 def carrega_dados():
     df = pd.read_csv('./dataset/KaggleV2-May-2016.csv', skiprows=[1])
-    df = df.drop(columns='PatientId')
     df = df.drop(columns='AppointmentID')
     df = df.drop(columns='Scholarship')
     df = df.rename(columns={
+    'PatientId': 'ID do Paciente',    
     'Gender': 'Gênero',
     'ScheduledDay': 'Dia Agendado',
     'AppointmentDay': 'Dia da Consulta',
