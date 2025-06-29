@@ -4,7 +4,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from utils.carrega_dados import carrega_dados
 
-st.set_page_config(Add commentMore actions
+
+st.set_page_config(
     page_title='Condições',
     page_icon='📈',
     layout='wide'
