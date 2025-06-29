@@ -11,7 +11,14 @@ st.set_page_config(
 df = carrega_dados()
 
 st.title("Resumo dos Principais Dados")
+
+st.markdown(f"""
+Bem-vindo(a) ao *Balcão de Consultas*! Aqui você encontrará uma visão geral dos dados de pacientes.
+""")
+
 st.dataframe(df.head())
+
+
 
 st.subheader('📊 Contar pacientes por gênero')
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
@@ -21,7 +28,9 @@ with col2:
 # Contar pacientes únicos por gênero
 contagem_pacientes = df.groupby('Gênero')['ID do Paciente'].nunique()
 
-# Renomear os índices para exibir no gráfico
+# Renomeia os índices do resultado para melhor visualização no gráfico
+# 'M' é mapeado para 'Homens' e 'F' para 'Mulheres'
+
 contagem_pacientes.index = contagem_pacientes.index.map({'M': 'Homens', 'F': 'Mulheres'})
 
 # Cores conforme pedido
@@ -48,5 +57,14 @@ for p in ax.patches:
 # Ajuste do layout
 plt.tight_layout()
 
+st.markdown(f"""
+    Visualize a contagem exata de pacientes únicos e compare a proporção entre Homens e Mulheres em nossos dados.
+""")
+
+
 # Exibir o gráfico no Streamlit
 st.pyplot(fig)
+st.markdown("""
+---
+Com base nesta análise, podemos entender melhor o perfil dos pacientes atendidos.
+""")

@@ -11,10 +11,23 @@ st.set_page_config(
     layout='wide'
 )
 
+# Título principal e introdução da página
+st.markdown("""
+# ✅ Análise de Comparecimento às Consultas
+### Bem-vindo a esta seção crucial! Aqui, investigamos o **comportamento de comparecimento dos pacientes às consultas**.
+### Vamos analisar a taxa geral de comparecimento e, em seguida, como o recebimento de SMS impacta essa presença.
+---
+""")
 
 df = carrega_dados()
 
-st.title("Compareceram as Consultas")
+
+# Seção 1: Distribuição de Comparecimento Geral
+st.title("📊 Taxa Geral de Comparecimento")
+st.markdown("""
+### Entenda a **proporção de pacientes que compareceram ou faltaram** às suas consultas agendadas.
+### Esta visão geral nos dá uma ideia inicial do engajamento dos pacientes.
+""")
 
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
@@ -52,6 +65,14 @@ plt.tight_layout()
 
 # Exibe no Streamlit
 st.pyplot(fig)
+
+# Seção 2: Influência do SMS no Comparecimento
+st.markdown("---") # Linha divisória para separar as seções
+st.markdown("## 📊 Impacto do Recebimento de SMS no Comparecimento")
+st.markdown("""
+### Agora, vamos aprofundar na análise: este gráfico de barras empilhadas mostra a **relação entre o recebimento de SMS de confirmação e o comparecimento** às consultas.
+### Descubra se o envio de SMS influencia na presença dos pacientes.
+""")
 
 
 
@@ -97,3 +118,11 @@ plt.tight_layout()
 
 # Exibir no Streamlit
 st.pyplot(fig)
+
+# Mensagem de encerramento da página
+st.markdown("""
+---
+Esses insights são fundamentais para otimizar nossas estratégias de comunicação e gestão de agendamentos,
+visando melhorar a taxa de comparecimento dos pacientes.
+""")
+

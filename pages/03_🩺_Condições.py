@@ -11,6 +11,12 @@ st.set_page_config(
     layout='wide'
 )
 
+st.markdown("""
+# 🏥 Análise de Condições de Saúde dos Pacientes
+### Bem-vindo a esta seção! Aqui, exploramos a **prevalência das condições de saúde** mais comuns entre nossos pacientes.
+Descubra como Hipertensão, Diabetes, Alcoolismo e Deficiência se distribuem em nossa base de dados.
+---
+""")
 
 df = carrega_dados()
 
@@ -21,6 +27,13 @@ col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 
 with col2:
     st.image("assets/consulta4.jpg", width=300)
+
+st.markdown("""
+---
+## Contagem de Pacientes por Condição de Saúde
+Este gráfico mostra a **quantidade de pacientes** que informaram ter cada uma das seguintes condições:
+**Hipertensão**, **Diabetes**, **Alcoolismo** e **Deficiência**.
+""")
 
 # Seleciona as colunas das condições
 condicoes = ['Hipertensão', 'Diabetes', 'Alcoolismo', 'Deficiência']
@@ -54,4 +67,9 @@ plt.tight_layout()
 
 
 st.pyplot(fig)
+
+st.markdown("""
+---
+Com base nesta análise, podemos entender melhor o perfil de saúde dos pacientes atendidos.
+""")
 

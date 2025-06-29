@@ -7,10 +7,22 @@ st.set_page_config(
     page_icon='📈',
     layout='wide'
 )
+# Título principal da página e introdução
+st.markdown("""
+# 📱 Análise da Comunicação com Pacientes
+### Bem-vindo à seção de análise de comunicação! Aqui, exploramos a **efetividade das mensagens de confirmação de consulta** enviadas via SMS.
+### Descubra quantos pacientes receberam ou não essas notificações.
+---
+""")
 
 df = carrega_dados()
 
+# Título da seção do gráfico de pizza
 st.title("Mensagem de Confirmação de Consulta")
+st.markdown("""
+Este gráfico mostra a **proporção de pacientes que receberam ou não uma mensagem SMS** de confirmação de consulta.
+É uma ferramenta visual rápida para entender a taxa de entrega das nossas comunicações.
+""")
 
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
@@ -34,3 +46,8 @@ plt.tight_layout()
 
 # Exibir no Streamlit
 st.pyplot(fig)
+# Mensagem de encerramento da página
+st.markdown("""
+---
+Esta análise ajuda a entender a eficácia do nosso sistema de envio de SMS e a identificar possíveis melhorias na comunicação com os pacientes.
+""")
