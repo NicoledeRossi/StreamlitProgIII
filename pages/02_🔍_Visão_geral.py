@@ -13,7 +13,7 @@ df = carrega_dados()
 st.title("Resumo dos Principais Dados")
 
 st.markdown(f"""
-Bem-vindo(a) ao *Balcão de Consultas*! Aqui você encontrará uma visão geral dos dados de pacientes.
+Aqui você encontrará uma visão geral dos dados de pacientes.
 """)
 
 st.dataframe(df.head())
@@ -21,6 +21,7 @@ st.dataframe(df.head())
 
 
 st.subheader('📊 Contar pacientes por gênero')
+
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/hxm.jpg", width=300)

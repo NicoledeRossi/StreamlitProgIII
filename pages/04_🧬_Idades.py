@@ -9,24 +9,23 @@ st.set_page_config(
     layout='wide'
 )
 
-st.markdown("""
-# 🧬 Perfil de Idade dos Pacientes
-### Bem-vindo à seção de análise demográfica por idade! Aqui, exploramos a **distribuição etária dos nossos pacientes** e a **relação da idade com o gênero**.
-### Entenda melhor a composição de idade da nossa base de dados.
----
-""")
-
 df = carrega_dados()
 
 
 # Título para a primeira seção do gráfico
-st.title('📊 Distribuição de Pacientes por Idade')
-st.markdown("Veja como a **quantidade de pacientes se distribui por cada faixa etária** em nosso conjunto de dados.")
-
-
+st.title('🧬 Perfil de Idade dos Pacientes')
+st.markdown("""
+A seção de análise por idade! Aqui, exploramos a **distribuição etária dos nossos pacientes** e a **relação da idade com o gênero**.
+            
+Entenda melhor a composição de idade da nossa base de dados.
+            
+---
+""")
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/idades.jpg", width=300)
+
+st.markdown("Veja como a **quantidade de pacientes se distribui por cada faixa etária** em nosso conjunto de dados.")
 
 # Contagem de pacientes por idade
 contagem_idade = df['Idade'].value_counts().sort_index()
@@ -50,10 +49,14 @@ st.pyplot(fig)
 
 
 # Título da seção do boxplot
-st.title("📊 Boxplot: Idade por Gênero")
-st.markdown("""
-### Este gráfico de boxplot permite visualizar a **distribuição da idade** para cada gênero (Masculino - **M** e Feminino - **F**).
-### Você pode observar a mediana, quartis, valores atípicos e as médias de idade para cada grupo, ajudando a identificar padrões ou diferenças significativas.
+st.subheader("📊 Boxplot: Idade por Gênero")
+st.markdown(f"""
+Este gráfico de boxplot permite visualizar a **distribuição da idade** para cada gênero (Masculino -**M** e Feminino -**F**).
+            
+Você pode observar a mediana, quartis, valores atípicos e as médias de idade para cada grupo, 
+ajudando a identificar padrões ou diferenças significativas.
+            
+
 """)
 
 # Filtrando os dados

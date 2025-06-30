@@ -16,9 +16,10 @@ st.image("assets/consulta.jpg", width=300)
 
 
 st.markdown(f"""
-Bem-vindo(a) ao **Balcao de Consultas**!
+            
+### Bem-vindo(a) ao **Balcao de Consultas**!
 
-Este aplicativo interativo foi desenvolvido para visualizar os dados de um dashboard mostrando a frequencia de pacientes a cosnultas marcadas.
+Este aplicativo interativo foi desenvolvido para visualizar os dados de um dashboard mostrando a frequencia de pacientes a consultas marcadas.
             
 O seu conjunto de dados tem as seguintes dimensões:
 - **Linhas:** `{df.shape[0]}` 📊
@@ -27,9 +28,11 @@ O seu conjunto de dados tem as seguintes dimensões:
 
 ---
 
+
 ### Como Navegar:
 
 Utilize o menu de navegação na **barra lateral (esquerda)** para explorar as diferentes seções do aplicativo:
+
 Cada seção apresenta gráficos, análises e informações específicas relacionadas à frequência dos pacientes em consultas.
 
 - Dashboard principal com gráficos de presença e ausência.
