@@ -15,7 +15,9 @@ df = carrega_dados()
 # Título para a primeira seção do gráfico
 st.title('🧬 Perfil de Idade dos Pacientes')
 st.markdown("""
-A seção de análise por idade! Aqui, exploramos a **distribuição etária dos nossos pacientes** e a **relação da idade com o gênero**.
+A seção de análise por idade! Aqui, exploramos a 
+            *distribuição etária dos nossos pacientes* e a 
+            *relação da idade com o gênero*.
             
 Entenda melhor a composição de idade da nossa base de dados.
             
@@ -24,6 +26,8 @@ Entenda melhor a composição de idade da nossa base de dados.
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/idades.jpg", width=300)
+
+st.subheader("🏥 Mapa das Idades dos Pacientes")
 
 st.markdown("Veja como a **quantidade de pacientes se distribui por cada faixa etária** em nosso conjunto de dados.")
 

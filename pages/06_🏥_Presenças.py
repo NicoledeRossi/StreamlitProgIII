@@ -11,22 +11,12 @@ st.set_page_config(
     layout='wide'
 )
 
-# Título principal e introdução da página
-st.markdown("""
-# ✅ Análise de Comparecimento às Consultas
-### Bem-vindo a esta seção crucial! Aqui, investigamos o **comportamento de comparecimento dos pacientes às consultas**.
-### Vamos analisar a taxa geral de comparecimento e, em seguida, como o recebimento de SMS impacta essa presença.
----
-""")
-
 df = carrega_dados()
 
-
-# Seção 1: Distribuição de Comparecimento Geral
-st.title("📊 Taxa Geral de Comparecimento")
-st.markdown("""
-### Entenda a **proporção de pacientes que compareceram ou faltaram** às suas consultas agendadas.
-### Esta visão geral nos dá uma ideia inicial do engajamento dos pacientes.
+st.title("✅ Análise de Comparecimento às Consultas")
+st.markdown(f"""
+Bem-vindo a esta seção crucial! Aqui, investigamos o **comportamento de comparecimento dos pacientes às consultas**.
+Vamos analisar a taxa geral de comparecimento e, em seguida, como o recebimento de SMS impacta essa presença.
 """)
 
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
@@ -34,18 +24,22 @@ with col2:
     st.image("assets/consulta2.jpg", width=300)
 
 
+# Mostra distribuição para conferência
+st.subheader("Distribuição de Comparecimento")
+st.write(df['Compareceu à Consulta'].value_counts())
 
-
+# Seção 1: Distribuição de Comparecimento Geral
+st.subheader("Taxa Geral de Comparecimento")
+st.markdown(f"""
+Entenda a **proporção de pacientes que compareceram ou faltaram** às suas consultas agendadas.
+Esta visão geral nos dá uma ideia inicial do engajamento dos pacientes.
+""")
 
 # Garante que a coluna está como string (evita erros de tipo)
 df['Faltou a Consulta'] = df['Faltou a Consulta'].astype(str)
 
 # Mapeia: invertendo o significado
 df['Compareceu à Consulta'] = df['Faltou a Consulta'].map({'Sim': 'Não', 'Não': 'Sim'})
-
-# Mostra distribuição para conferência
-st.subheader("Distribuição de Comparecimento")
-st.write(df['Compareceu à Consulta'].value_counts())
 
 # Gera o gráfico
 fig, ax = plt.subplots(figsize=(8, 5))
@@ -68,13 +62,12 @@ st.pyplot(fig)
 
 # Seção 2: Influência do SMS no Comparecimento
 st.markdown("---") # Linha divisória para separar as seções
-st.markdown("## 📊 Impacto do Recebimento de SMS no Comparecimento")
-st.markdown("""
-### Agora, vamos aprofundar na análise: este gráfico de barras empilhadas mostra a **relação entre o recebimento de SMS de confirmação e o comparecimento** às consultas.
-### Descubra se o envio de SMS influencia na presença dos pacientes.
+st.subheader("Impacto do Recebimento de SMS no Comparecimento")
+st.markdown(f"""
+Agora, vamos aprofundar na análise: este gráfico de barras empilhadas mostra a 
+            *relação entre o recebimento de SMS de confirmação e o comparecimento às consultas*.
+Descubra se o envio de SMS influencia na presença dos pacientes.
 """)
-
-
 
 
 # Garante que os dados estão no formato correto
