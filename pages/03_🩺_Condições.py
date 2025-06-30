@@ -15,21 +15,19 @@ df = carrega_dados()
 
 st.title("Condições de saúde informada")
 
-col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 
-st.markdown("""
-         
+st.markdown("""        
 Aqui exploramos a *prevalência das condições de saúde* mais comuns entre nossos pacientes.
 Descubra como essas doenças pré-existentes se distribuem em nossa base de dados.
-            
----
-            
 """)
 
+col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/consulta4.jpg", width=300)
 
-st.markdown("""
+st.markdown("---")
+
+st.markdown("""                    
 ## 🏥 Contagem de Pacientes por Condição de Saúde
             
 Este gráfico mostra a **quantidade de pacientes** que informaram ter cada uma das seguintes condições:

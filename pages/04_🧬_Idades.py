@@ -21,11 +21,12 @@ A seção de análise por idade! Aqui, exploramos a
             
 Entenda melhor a composição de idade da nossa base de dados.
             
----
 """)
 col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/idades.jpg", width=300)
+
+st.markdown("---")
 
 st.subheader("🏥 Mapa das Idades dos Pacientes")
 

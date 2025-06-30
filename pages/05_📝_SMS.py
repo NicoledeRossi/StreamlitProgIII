@@ -16,19 +16,18 @@ st.markdown("""
 Bem-vindo à seção de análise de comunicação! Aqui, exploramos a **efetividade das mensagens de confirmação de consulta** enviadas via SMS.
 Descubra quantos pacientes receberam ou não essas notificações.
             
----
 """)
+col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
+with col2:
+    st.image("assets/mensagem.jpg", width=300)
+
+st.markdown("---")
 
 st.subheader("📱 Análise da Comunicação com Pacientes")
 st.markdown(f"""
 Este gráfico mostra a *proporção de pacientes* que **receberam** ou **não** um SMS de confirmação de consulta.
 É uma ferramenta visual rápida para entender a taxa de entrega das nossas comunicações.
 """)
-
-col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
-with col2:
-    st.image("assets/mensagem.jpg", width=300)
-
 
 # Contagem de SMS recebidos
 contagem_sms = df['SMS Recebido'].value_counts()
@@ -37,7 +36,7 @@ contagem_sms = df['SMS Recebido'].value_counts()
 rotulos = ['Não Recebeu', 'Recebeu']  # Certifique-se que o index 0 = Não, 1 = Sim
 
 # Criando a figura
-fig, ax = plt.subplots(figsize=(5, 5))
+fig, ax = plt.subplots(figsize=(4, 4))
 ax.pie(contagem_sms, labels=rotulos, autopct='%1.1f%%',
        colors=['lightcoral', 'lightgreen'], startangle=140)
 

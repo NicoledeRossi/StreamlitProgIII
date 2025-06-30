@@ -23,15 +23,17 @@ col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
 with col2:
     st.image("assets/consulta2.jpg", width=300)
 
+st.markdown("---")
 
 # Mostra distribuição para conferência
 st.subheader("Distribuição de Comparecimento")
-st.write(df['Compareceu à Consulta'].value_counts())
+st.write(df['Faltou a Consulta'].value_counts())
 
 # Seção 1: Distribuição de Comparecimento Geral
 st.subheader("Taxa Geral de Comparecimento")
 st.markdown(f"""
-Entenda a **proporção de pacientes que compareceram ou faltaram** às suas consultas agendadas.
+Entenda a **proporção de pacientes que compareceram ou faltaram** às consultas agendadas.
+            
 Esta visão geral nos dá uma ideia inicial do engajamento dos pacientes.
 """)
 
