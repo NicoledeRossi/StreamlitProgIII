@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import seaborn as sns
+import plotly.express as px
 import matplotlib.pyplot as plt
 from utils.carrega_dados import carrega_dados
 
@@ -27,9 +28,8 @@ with col2:
 
 st.markdown("---")
 
-st.markdown("""                    
-## 🏥 Contagem de Pacientes por Condição de Saúde
-            
+st.subheader("🏥 Contagem de Pacientes por Condição de Saúde")
+st.markdown("""                              
 Este gráfico mostra a **quantidade de pacientes** que informaram ter cada uma das seguintes condições:
             
 **Hipertensão**, **Diabetes**, **Alcoolismo** e **Deficiência**.
@@ -69,8 +69,41 @@ plt.tight_layout()
 
 st.pyplot(fig)
 
+
+
+st.markdown("---")
+st.subheader("📌 Distribuição de Doenças por Idade e Gênero")
+st.markdown("""
+Explore a relação entre **condições médicas**, **idade dos pacientes** e **gênero**.
+Você pode selecionar a condição de saúde desejada para analisar sua distribuição.
+""")
+# Criação da coluna de Faixa Etária
+bins = [0, 9, 19, 29, 39, 49, 59, 69, float('inf')]
+labels = ['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70+']
+df['Faixa Etária'] = pd.cut(df['Idade'], bins=bins, labels=labels, right=True)
+
+doenca_escolhida = st.selectbox("Selecione uma condição médica:", ['Hipertensão', 'Diabetes', 'Alcoolismo', 'Deficiência'])
+
+# Filtra os pacientes com a doença escolhida
+df_doenca = df[df[doenca_escolhida] == 1]
+
+# Conta por faixa etária e gênero
+contagem = df_doenca.groupby(['Faixa Etária', 'Gênero']).size().reset_index(name='Quantidade')
+
+# Gráfico de barras empilhadas
+fig = px.bar(
+    contagem,
+    x='Faixa Etária',
+    y='Quantidade',
+    color='Gênero',
+    title=f'Distribuição de {doenca_escolhida} por Faixa Etária e Gênero',
+    labels={'Quantidade': 'Número de Pacientes'},
+    color_discrete_map={'F': 'deeppink', 'M': 'blue'}
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
 st.markdown("""
 ---
 Com base nesta análise, podemos entender melhor o perfil de saúde dos pacientes atendidos.
 """)
-
