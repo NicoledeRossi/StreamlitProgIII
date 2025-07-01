@@ -1,18 +1,11 @@
 import streamlit as st
+import plotly.express as px
+import pandas as pd
 import matplotlib.pyplot as plt
 from utils.carrega_dados import carrega_dados
 
-
-st.set_page_config(
-    page_title='Condições',
-    page_icon='"🧬',
-    layout='wide'
-)
-
 df = carrega_dados()
 
-
-# Título para a primeira seção do gráfico
 st.title('🧬 Perfil de Idade dos Pacientes')
 st.markdown("""
 A seção de análise por idade! Aqui, exploramos a 
@@ -20,37 +13,30 @@ A seção de análise por idade! Aqui, exploramos a
             *relação da idade com o gênero*.
             
 Entenda melhor a composição de idade da nossa base de dados.
-            
 """)
-col1, col2, col3 = st.columns([1, 2, 1])  # Coluna do meio é maior
+
+col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.image("assets/idades.jpg", width=300)
 
 st.markdown("---")
-
 st.subheader("🏥 Mapa das Idades dos Pacientes")
-
 st.markdown("Veja como a **quantidade de pacientes se distribui por cada faixa etária** em nosso conjunto de dados.")
 
 # Contagem de pacientes por idade
 contagem_idade = df['Idade'].value_counts().sort_index()
+contagem_df = pd.DataFrame({
+    'Idade': contagem_idade.index,
+    'Quantidade': contagem_idade.values
+})
 
-# Criar a figura
-fig, ax = plt.subplots(figsize=(12, 6))
-contagem_idade.plot(kind='bar', color='skyblue', ax=ax)
+# Gráfico interativo com Plotly
+fig_bar = px.bar(contagem_df, x='Idade', y='Quantidade',
+                 labels={'Quantidade': 'Número de Pacientes'},
+                 title='Número de Pacientes por Idade',
+                 color_discrete_sequence=['skyblue'])
 
-# Títulos e rótulos
-ax.set_xlabel('Idade')
-ax.set_ylabel('Número de Pacientes')
-ax.set_title('Número de Pacientes por Idade')
-ax.grid(axis='y')
-
-# Ajustar o layout
-plt.tight_layout()
-
-# Exibir no Streamlit
-st.pyplot(fig)
-
+st.plotly_chart(fig_bar, use_container_width=True)
 
 
 # Título da seção do boxplot
